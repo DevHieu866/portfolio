@@ -74,23 +74,23 @@ export default function Home() {
         </h1>
 
 
-        <div className="mt-10 py-50">
-          <Carousel className="w-full max-w-4xl relative">
+        <div className="mt-10 py-50 w-full h-full justify-items-center">
+          <Carousel className="w-full h-full max-w-6xl relative">
             <CarouselContent>
               {images.map((image, index) => (
                 <CarouselItem key={index}>
-                <div className="p-1">
+                <div className="p-1 w-full h-full">
                   <span className="p-2 text-3xl w-[25%] text-normText font-bold">{image.description}</span>
                   <br/>
                   <span className="p-2 text-xl w-[25%] text-normText">{image.tools}</span>
-                  <div className=" mt-10 relative w-full justify-items-center justify-center transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10">
+                  <div className="mt-10 relative w-full justify-items-center transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10">
                     <a href={image.siteLink} target="_blank" rel="noopener noreferrer">
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        className="object-cover duration-300 ease-in-out"
+                        className="img object-cover duration-300 ease-in-out"
                         width={1000}
-                        height={750}
+                        height={1000}
                       />
                     </a>
                   </div>

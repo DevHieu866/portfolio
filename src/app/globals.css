@@ -9,3 +9,9 @@ body {
 textarea {
   resize: none;
 }
+
+.img {
+  float: left;
+  width: 1200px;
+  height: 500px;
+}
