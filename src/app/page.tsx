@@ -1,101 +1,136 @@
+import { Button } from "@/components/ui/button";
+import Navbar from "@/components/ui/Navbar";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+import { cn } from "@/lib/utils";
+import ContactForm from "@/components/ui/ContactForm";
+
+const images = [
+  { src: "/MovieApp.png", 
+    alt: "Image 1", 
+    description:"Movie App",
+    tools:"Tools: React, Javascript, HTML/CSS",
+    siteLink:"https://devhieu866.github.io/MovieWebsite/"
+   },
+  { src: "/ProductApp.png", 
+    alt: "Image 2", 
+    description:"Product Management App",
+    tools:"Tools: React, Javascript, Express.js, Node.js, MongoDB",
+    siteLink:"https://product-management-website.onrender.com/"
+   },
+]
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <>
+      <Navbar/>
+      <main className="justify-items-center mt-40">
+
+        <h1 id="about" className="p-4 mt-16 text-6xl text-titleText scroll-mt-16">
+          About
+        </h1>
+
+        <h2 className="p-2 mt-8 text-3xl text-nameText">
+          Hello, I'm Hieu Tran
+        </h2>
+
+        <div className="p-2 mt-2 text-lg w-[25%] text-normText">
+        I am a recent graduate from San Jose State University with a degree in Software Engineering. 
+        I have a passion for designing intuitive websites 
+        and I enjoy experimenting with modern technologies like React, Next.js, and Tailwind CSS. 
+        My work focuses on creating user-friendly experiences while exploring innovative features and tech stacks. 
+        Outside of coding, I enjoy hanging out with friends and trying out new music.
+        </div>
+
+        {/* Links to LinkedIn,Github,Resume */}
+        <div className="justify-between mt-5">
+          <Button className="bg-buttonColor rounded-xl mx-4 hover:bg-blue-500">
+            <a href="https://www.linkedin.com/in/hieu-tran-8563a7322/" target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <Image src="/LinkedInIcon.png" alt="LinkedIn Image" width={25} height={25}/>
+          </Button>
+          <Button className="bg-buttonColor rounded-xl mx-4 hover:bg-gray-400">
+            <a href="https://github.com/DevHieu866">
+              Github
+            </a>
+            <Image src="/GithubIcon.png" alt="Github Image" width={25} height={25}/>
+          </Button>
+          <Button className="bg-buttonColor rounded-xl mx-4 hover:bg-red-500">
+            <a href="/HieuTran_Resume.pdf" download="HieuTran_Resume.pdf">
+              Resume
+            </a>
+            <Image src="/ResumeIcon.png" alt="Resume Image" width={25} height={25}/>
+          </Button>
+        </div>
+
+        <h1 id="projects" className="p-4 mt-80 text-6xl text-titleText scroll-mt-16">
+          Projects
+        </h1>
+
+
+        <div className="mt-10 py-50">
+          <Carousel className="w-full max-w-4xl relative">
+            <CarouselContent>
+              {images.map((image, index) => (
+                <CarouselItem key={index}>
+                <div className="p-1">
+                  <span className="p-2 text-3xl w-[25%] text-normText font-bold">{image.description}</span>
+                  <br/>
+                  <span className="p-2 text-xl w-[25%] text-normText">{image.tools}</span>
+                  <div className=" mt-10 relative w-full justify-items-center justify-center transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10">
+                    <a href={image.siteLink} target="_blank" rel="noopener noreferrer">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        className="object-cover duration-300 ease-in-out"
+                        width={1000}
+                        height={750}
+                      />
+                    </a>
+                  </div>
+                </div>
+              </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className={cn(
+              "absolute right-10 top-1/2 -translate-y-1/2",
+              "h-8 w-8 rounded-full",
+              "border border-slate-200 bg-white",
+              "flex items-center justify-center",
+              "hover:bg-slate-300 hover:text-slate-900"
+            )} />
+            <CarouselNext className={cn(
+              "absolute left-30 top-1/2 -translate-y-1/2",
+              "h-8 w-8 rounded-full",
+              "border border-slate-200 bg-white",
+              "flex items-center justify-center",
+              "hover:bg-slate-300 hover:text-slate-900"
+            )} />
+          </Carousel>
+        </div>
+
+        <h1 id="contact" className="p-4 mt-72 text-6xl text-titleText scroll-mt-16">
+          Contact
+        </h1>
+        <div className="py-15 mt-10 w-[33%] justify-items-center">
+          <div className="mb-10 p-2 text-xl font-bold text-normText w-[70%]">
+            Feel free to contact me if you have any questions! I will 
+            respond as soon as possible.
+            </div>
+          <ContactForm/>
+        </div>
+        <div className=" relative flex flex-col py-20 w-full">
+          <div className="absolute bottom-0 h-1/2 w-full bg-footerColor"/>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
