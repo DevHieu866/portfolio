@@ -9,8 +9,7 @@ export default function ContactForm(){
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const emailApiKey = process.env.EMAIL_API_KEY;
-    formData.append("access_key","emailApiKey")
+    formData.append("access_key","3b483299-694e-4df1-ab4c-6fccbb8db389")
     const object = Object.fromEntries(formData)
     const json = JSON.stringify(object)
     const data = Object.fromEntries(formData.entries());

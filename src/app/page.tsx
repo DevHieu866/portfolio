@@ -25,9 +25,7 @@ const images = [
     siteLink:"https://product-management-website.onrender.com/"
    },
 ]
-
 export default function Home() {
-
   return (
     <>
       <Navbar/>
