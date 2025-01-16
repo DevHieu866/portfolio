@@ -10,21 +10,31 @@ import {
 } from "@/components/ui/carousel"
 import { cn } from "@/lib/utils";
 import ContactForm from "@/components/ui/ContactForm";
+import ProjectCard from "@/components/ui/ProjectCard";
 
 const images = [
-  { src: "/MovieApp.png", 
-    alt: "Image 1", 
-    description:"Movie App",
-    tools:"Tools: React, Javascript, HTML/CSS",
-    siteLink:"https://devhieu866.github.io/MovieWebsite/"
-   },
-  { src: "/ProductApp.png", 
-    alt: "Image 2", 
-    description:"Product Management App",
-    tools:"Tools: React, Javascript, Express.js, Node.js, MongoDB",
-    siteLink:"https://product-management-website.onrender.com/"
-   },
+  {
+    title: "Product Management App",
+    description: "MERN stack application that allow user to perform CRUD operations in order to track product inventory.",
+    githubUrl: "https://github.com/DevHieu866/product-management-website",
+    websiteUrl: "https://product-management-website.onrender.com/",
+    imageUrl: "/ProductApp.png"
+  },
+  {
+    title: "Movie App",
+    description: "App built with React which displays movies. Contains dynamic features such as search and favoriting movies.",
+    githubUrl: "https://github.com/DevHieu866/MovieWebsite",
+    websiteUrl: "https://devhieu866.github.io/MovieWebsite/",
+    imageUrl: "/MovieApp.png"
+  },
+  {
+    title: "BRAF Predictor",
+    description: "Used Python to scrape and clean data of molecular structures. Trained an SVR model with data to predict small molecule inhibitors.",
+    githubUrl: "https://github.com/DevHieu866/braf_predictions",
+    imageUrl: "/Braf.png"
+  }
 ]
+
 export default function Home() {
   return (
     <>
@@ -62,7 +72,7 @@ export default function Home() {
             <Image src="/GithubIcon.png" alt="Github Image" width={25} height={25}/>
           </Button>
           <Button className="bg-buttonColor rounded-xl mx-4 hover:bg-red-500">
-            <a href="/HieuTran_Resume.pdf" download="HieuTran_Resume.pdf">
+            <a href="/Hieu Tran CV.pdf" download="Hieu Tran CV.pdf">
               Resume
             </a>
             <Image src="/ResumeIcon.png" alt="Resume Image" width={25} height={25}/>
@@ -75,38 +85,23 @@ export default function Home() {
 
 
         <div className="mt-10 py-50 w-full h-full justify-items-center">
-          <Carousel className="w-full h-full max-w-6xl relative">
+          <Carousel>
             <CarouselContent>
               {images.map((image, index) => (
-                <CarouselItem key={index}>
-                <div className="p-1 w-full h-full">
-                  <span className="p-2 text-3xl w-[25%] text-normText font-bold">{image.description}</span>
-                  <br/>
-                  <span className="p-2 text-xl w-[25%] text-normText">{image.tools}</span>
-                  <div className="mt-10 relative w-full justify-items-center transition-transform duration-300 ease-in-out hover:scale-105 hover:z-10">
-                    <a href={image.siteLink} target="_blank" rel="noopener noreferrer">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        className="img object-cover duration-300 ease-in-out"
-                        width={1000}
-                        height={1000}
-                      />
-                    </a>
-                  </div>
-                </div>
-              </CarouselItem>
+                <CarouselItem key={index} className="justify-items-center">
+                    <ProjectCard {...image}/>
+                </CarouselItem>
               ))}
             </CarouselContent>
             <CarouselPrevious className={cn(
-              "absolute right-10 top-1/2 -translate-y-1/2",
+              "absolute left-1/4 top-1/2 -translate-y-1/2",
               "h-8 w-8 rounded-full",
               "border border-slate-200 bg-white",
               "flex items-center justify-center",
               "hover:bg-slate-300 hover:text-slate-900"
             )} />
             <CarouselNext className={cn(
-              "absolute left-30 top-1/2 -translate-y-1/2",
+              "absolute right-1/4 top-1/2 -translate-y-1/2",
               "h-8 w-8 rounded-full",
               "border border-slate-200 bg-white",
               "flex items-center justify-center",
